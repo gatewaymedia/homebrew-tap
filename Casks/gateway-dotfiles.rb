@@ -17,7 +17,7 @@ cask "gateway-dotfiles" do
   preflight do
     omz = "#{Dir.home}/.oh-my-zsh"
 
-    if omz.exist?
+    if omz.exists?
       ohai "Oh My Zsh is installed"
     else
       ohai "Installing Oh My Zsh"
