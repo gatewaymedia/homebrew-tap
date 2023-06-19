@@ -7,6 +7,8 @@ cask "gateway-dotfiles" do
   name "Gateway Dotfiles"
   homepage "https://github.com/gatewaymedia/dotfiles"
 
+  # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
+  auto_updates true
   depends_on cask: ["homebrew/cask-fonts/font-sf-mono",
                     "bevanjkay/tap/zsh-autosuggestions",
                     "bevanjkay/tap/zsh-syntax-highlighting"]
