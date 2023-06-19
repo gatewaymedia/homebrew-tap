@@ -15,9 +15,9 @@ cask "gateway-dotfiles" do
   artifact ".zshrc", target: "~/.zshrc"
 
   preflight do
-    omz = "#{Dir.home}/.oh-my-zsh"
+    omz = Pathname("#{Dir.home}/.oh-my-zsh")
 
-    if omz.exists?
+    if omz.exist?
       ohai "Oh My Zsh is installed"
     else
       ohai "Installing Oh My Zsh"
