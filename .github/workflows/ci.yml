@@ -154,6 +154,7 @@ jobs:
         id: info
         run: |
           brew tap homebrew/cask-fonts
+          brew tap bevanjkay/tap
           brew ruby <<'EOF'
             require 'cask/cask_loader'
             require 'cask/installer'
