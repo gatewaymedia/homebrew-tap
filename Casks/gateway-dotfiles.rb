@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230622"
+  version "20230625"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -18,7 +18,7 @@ cask "gateway-dotfiles" do
   artifact ".zshrc", target: "~/.zshrc"
 
   preflight do
-    omz = Pathname("#{Dir.home}/.oh-my-zsh")
+    omz = Pathname("#{Dir.home}/.oh-my-zsh/lib/")
 
     if omz.exist?
       ohai "Oh My Zsh is installed"
