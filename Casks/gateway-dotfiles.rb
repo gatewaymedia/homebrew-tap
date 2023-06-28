@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230628"
+  version "20230629"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -11,7 +11,8 @@ cask "gateway-dotfiles" do
   auto_updates true
   depends_on cask:    ["homebrew/cask-fonts/font-sf-mono",
                        "bevanjkay/tap/zsh-autosuggestions",
-                       "bevanjkay/tap/zsh-syntax-highlighting"],
+                       "bevanjkay/tap/zsh-syntax-highlighting",
+                       "hyper", "stats"],
              formula: ["mas", "yt-dlp"]
 
   artifact ".hyper.js", target: "~/.hyper.js"
