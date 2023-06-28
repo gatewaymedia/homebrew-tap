@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230625"
+  version "20230628"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
