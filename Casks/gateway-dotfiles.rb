@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230629.1"
+  version "20230630"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -17,6 +17,7 @@ cask "gateway-dotfiles" do
 
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
+  artifact ".stats.json", target: "~/.stats.json"
 
   preflight do
     omz = Pathname("#{Dir.home}/.oh-my-zsh/lib/")
@@ -28,5 +29,9 @@ cask "gateway-dotfiles" do
       ohai "Installing Oh My Zsh"
       system "sh", "-c", "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     end
+  end
+
+  postflight do
+    system "defaults", "import", "eu.exelban.Stats", "~/.stats.json"
   end
 end
