@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230630"
+  version "20230630.1"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -27,11 +27,12 @@ cask "gateway-dotfiles" do
       system "omz", "update"
     else
       ohai "Installing Oh My Zsh"
-      system "sh", "-c", "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      system "sh -c $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     end
   end
 
   postflight do
-    system "defaults", "import", "eu.exelban.Stats", "~/.stats.json"
+    ohai "Importing Stats preferences"
+    system "defaults", "import", "eu.exelban.Stats", "#{staged_path}/.stats.json"
   end
 end
