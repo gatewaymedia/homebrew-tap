@@ -33,7 +33,7 @@ cask "gateway-dotfiles" do
 
     if zshrc.exist?
       ohai "Backing up existing .zshrc"
-      system "mv", "~/.zshrc", "~/.zshrc.backup", "-f"
+      system "mv", "-f", "~/.zshrc", "~/.zshrc.backup"
     end
   end
 
