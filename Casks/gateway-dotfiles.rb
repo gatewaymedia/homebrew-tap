@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20230717.1"
+  version "20230818"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -13,7 +13,7 @@ cask "gateway-dotfiles" do
                        "bevanjkay/tap/zsh-autosuggestions",
                        "bevanjkay/tap/zsh-syntax-highlighting",
                        "hyper", "stats"],
-             formula: ["mas", "yt-dlp"]
+             formula: ["mas", "yt-dlp", "ffmpeg"]
 
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
@@ -27,6 +27,13 @@ cask "gateway-dotfiles" do
     else
       ohai "Installing Oh My Zsh"
       system "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+    end
+
+    zshrc = Pathname("#{Dir.home}/.zshrc")
+
+    if zshrc.exist?
+      ohai "Backing up existing .zshrc"
+      system "mv", "~/.zshrc", "~/.zshrc.backup", "-f"
     end
   end
 
