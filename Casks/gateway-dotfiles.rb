@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20231201"
+  version "20231213"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -25,7 +25,7 @@ cask "gateway-dotfiles" do
     if omz.exist?
       ohai "Oh My Zsh is installed"
       ohai "Checking for updates to Oh My Zsh"
-      system "omz update"
+      system "omz", "update"
     else
       ohai "Installing Oh My Zsh"
       system "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
