@@ -30,11 +30,7 @@ cask "gateway-dotfiles" do
   preflight do
     omz = Pathname("#{Dir.home}/.oh-my-zsh/lib/")
 
-    if omz.exist?
-      ohai "Oh My Zsh is installed"
-      ohai "Checking for updates to Oh My Zsh"
-      system "omz", "update"
-    else
+    unless omz.exist?
       ohai "Installing Oh My Zsh"
       system "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
     end
