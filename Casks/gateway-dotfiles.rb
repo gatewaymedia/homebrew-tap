@@ -1,11 +1,19 @@
 cask "gateway-dotfiles" do
-  version "20231213"
+  version "20231218,eaeaf9637431dd342550d2ca894540bd4f056459"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
       branch:   "main"
   name "Gateway Dotfiles"
   homepage "https://github.com/gatewaymedia/dotfiles"
+
+  livecheck do
+    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits/main"
+    strategy :json do |json|
+      date = DateTime.parse(json["commit"]["committer"]["date"]).strftime("%Y%m%d")
+      "#{date},#{json["sha"]}"
+    end
+  end
 
   # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
   auto_updates true
