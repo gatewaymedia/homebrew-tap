@@ -1,6 +1,6 @@
 cask "gateway-printer-driver" do
-  version "7.115.0.0,19994"
-  sha256 "3ddeb27eabb6e3ae83cd24c78108b97487e4d169291834a98a08837d6e94bdd3"
+  version "7.117.3.0,20759"
+  sha256 "7de8a1c118ba1d8182366e3d32281d68137b9307a31300e3e6c5abf905c42041"
 
   url "https://business.toshiba.com/downloads/KB/f1Ulds/#{version.csv.second}/TOSHIBA_ColorMFP.dmg.gz"
   name "Toshiba ColorMFP Drivers"
