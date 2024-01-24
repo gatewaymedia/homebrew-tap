@@ -59,7 +59,5 @@ cask "gateway-label-printer-driver" do
 
   pkg "Brother_Printer_Drivers.pkg"
 
-  uninstall pkgutil: [
-    "com.brother.brotherdriver.BrotherQL*",
-  ]
+  uninstall pkgutil: "com.brother.brotherdriver.BrotherQL*"
 end
