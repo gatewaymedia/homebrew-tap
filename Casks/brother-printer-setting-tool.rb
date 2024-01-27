@@ -59,7 +59,5 @@ cask "brother-printer-setting-tool" do
 
   pkg "BrotherPrinterSettingTool.pkg"
 
-  uninstall pkgutil: [
-    "com.Brother.Brotherdriver.BrotherPrinterSettingTool",
-  ]
+  uninstall pkgutil: "com.Brother.Brotherdriver.BrotherPrinterSettingTool"
 end
