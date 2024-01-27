@@ -15,7 +15,7 @@ module Homebrew
         NICE_NAME = "dafont"
 
         # The `Regexp` used to determine if the strategy applies to the URL.
-        URL_MATCH_REGEX = %r{^https?://.+dafont}i.freeze
+        URL_MATCH_REGEX = %r{^https?://.+dafont}i
 
         # Whether the strategy can be applied to the provided URL.
         #
