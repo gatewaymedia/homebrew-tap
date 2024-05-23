@@ -46,7 +46,7 @@ module Homebrew
 
           version_text = "#{year}#{month}#{day}"
 
-          match_data = { matches: {}, url: url }
+          match_data = { matches: {}, url: }
 
           match_data[:matches][version_text] = Version.new(version_text)
 
