@@ -6,6 +6,7 @@ cask "font-tt-ramillas" do
 
   url "https://dl.dafont.com/dl/?f=tt_ramillas"
   name "TT Ramillas"
+  desc "Serif font"
   homepage "https://www.dafont.com/tt-ramillas.font"
 
   livecheck do
