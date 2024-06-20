@@ -37,7 +37,9 @@ module Homebrew
           page = Homebrew::Livecheck::Strategy.page_content(url)
           return [] if page.blank? || page[:content].blank?
 
-          match = page[:content][/(?:Updated|First seen on DaFont):\s+([^<"]+)/i, 1]
+          updated = page[:content][/(?:Updated):\s+([^<"]+)/i, 1]
+          first_seen = page[:content][/(?:First seen on DaFont):\s+([^<"]+)/i, 1]
+          match = updated || first_seen
           return [] unless match
 
           year = match.split(",").last.tr(" ", "")
