@@ -124,6 +124,9 @@ jobs:
         run: brew install-bundler-gems
         if: steps.cache.outputs.cache-hit != 'true'
 
+      - name: Dependent taps
+        run: brew tap bevanjkay/formulae
+
       - name: Run brew readall ${{ matrix.tap }}
         id: readall
         run: brew readall --os=all --arch=all '${{ matrix.tap }}'
@@ -166,8 +169,6 @@ jobs:
           brew ruby <<'EOF'
             require 'cask/cask_loader'
             require 'cask/installer'
-
-            brew tap bevanjkay/formulae
 
             cask = Cask::CaskLoader.load('${{ matrix.cask.path }}')
 
