@@ -167,6 +167,8 @@ jobs:
             require 'cask/cask_loader'
             require 'cask/installer'
 
+            brew tap bevanjkay/formulae
+
             cask = Cask::CaskLoader.load('${{ matrix.cask.path }}')
 
             was_installed = cask.installed?
