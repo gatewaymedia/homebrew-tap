@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20240912,34bab550e4959db2f87c8924425ae7664163f0d5"
+  version "20240912,254695429396623e9a33d3b9949ce357f9e08bd0"
   sha256 :no_check
 
   on_monterey :or_older do
