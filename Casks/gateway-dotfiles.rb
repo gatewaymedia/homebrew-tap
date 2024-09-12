@@ -3,10 +3,19 @@ cask "gateway-dotfiles" do
   sha256 :no_check
 
   on_monterey :or_newer do
-    depends_on formula: %w[ffmpeg imagemagick mas yt-dlp]
+    depends_on formula: %w[
+      ffmpeg
+      imagemagick
+      mas
+      yt-dlp
+    ]
   end
   on_ventura :or_older do
-    depends_on formula: ["bevanjkay/formulae/mas-legacy", "bevanjkay/formulae/ffmpeg-legacy", "yt-dlp-binary"]
+    depends_on formula: [
+      "bevanjkay/formulae/mas-legacy",
+      "bevanjkay/formulae/ffmpeg-legacy",
+      "yt-dlp-binary",
+    ]
   end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
