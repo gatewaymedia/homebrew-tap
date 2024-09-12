@@ -3,10 +3,10 @@ cask "gateway-dotfiles" do
   sha256 :no_check
 
   on_monterey :or_older do
-    binary "Brewfile-legacy", target: "~/.Brewfile"
+    binary ".Brewfile-legacy", target: "~/.Brewfile"
   end
   on_ventura :or_newer do
-    binary "Brewfile", target: "~/.Brewfile"
+    binary ".Brewfile", target: "~/.Brewfile"
   end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
