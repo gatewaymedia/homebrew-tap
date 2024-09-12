@@ -1,6 +1,13 @@
 cask "gateway-dotfiles" do
-  version "20240107,469ae5cd2532adf6787071178ae6e41011bac64e"
+  version "20240912,34bab550e4959db2f87c8924425ae7664163f0d5"
   sha256 :no_check
+
+  on_monterey :or_older do
+    binary "Brewfile-legacy", target: "~/Brewfile"
+  end
+  on_ventura :or_newer do
+    binary "Brewfile"
+  end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
       branch:   "main"
@@ -17,11 +24,6 @@ cask "gateway-dotfiles" do
 
   # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
   auto_updates true
-  depends_on cask:    ["homebrew/cask-fonts/font-sf-mono",
-                       "bevanjkay/tap/zsh-autosuggestions",
-                       "bevanjkay/tap/zsh-syntax-highlighting",
-                       "hyper", "stats"],
-             formula: ["mas", "yt-dlp", "ffmpeg"]
 
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
@@ -40,6 +42,13 @@ cask "gateway-dotfiles" do
     if zshrc.exist?
       ohai "Backing up existing .zshrc"
       system "mv", "-f", "#{Dir.home}/.zshrc", "#{Dir.home}/.zshrc.backup"
+    end
+
+    Pathname("#{Dir.home}/Brewfile")
+
+    if zshrc.exist?
+      ohai "Backing up existing Brewfile"
+      system "mv", "-f", "#{Dir.home}/Brewfile", "#{Dir.home}/Brewfile.backup"
     end
   end
 
