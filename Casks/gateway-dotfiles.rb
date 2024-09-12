@@ -11,10 +11,10 @@ cask "gateway-dotfiles" do
     ]
   end
   on_ventura :or_older do
+    depends_on cask: "gatewaymedia/tap/yt-dlp-binary"
     depends_on formula: [
       "bevanjkay/formulae/mas-legacy",
       "bevanjkay/formulae/ffmpeg-legacy",
-      "gatewaymedia/tap/yt-dlp-binary",
     ]
   end
 
