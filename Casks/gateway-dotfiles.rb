@@ -14,7 +14,7 @@ cask "gateway-dotfiles" do
     depends_on formula: [
       "bevanjkay/formulae/mas-legacy",
       "bevanjkay/formulae/ffmpeg-legacy",
-      "yt-dlp-binary",
+      "gatewaymedia/tap/yt-dlp-binary",
     ]
   end
 
