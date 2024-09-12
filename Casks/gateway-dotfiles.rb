@@ -1,12 +1,12 @@
 cask "gateway-dotfiles" do
-  version "20240912,254695429396623e9a33d3b9949ce357f9e08bd0"
+  version "20240912,47107c0594376db3af346a35c0323462f4af46c8"
   sha256 :no_check
 
   on_monterey :or_older do
-    binary "Brewfile-legacy", target: "~/Brewfile"
+    binary ".Brewfile-legacy", target: "~/.Brewfile"
   end
   on_ventura :or_newer do
-    binary "Brewfile"
+    binary ".Brewfile", target: "~/.Brewfile"
   end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
