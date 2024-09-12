@@ -111,6 +111,11 @@ jobs:
           brew unlink python && brew link --overwrite python
         if: runner.os == 'macOS'
 
+      - name: Install dependent taps
+        run: |
+          brew tap bevanjkay/formulae
+          brew tap bevanjkay/tap
+
       - name: Cache Homebrew Gems
         id: cache
         uses: actions/cache@v3
