@@ -24,10 +24,13 @@ cask "gateway-dotfiles" do
 
   # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
   auto_updates true
-  depends_on cask: ["homebrew/cask-fonts/font-sf-mono",
-                    "bevanjkay/tap/zsh-autosuggestions",
-                    "bevanjkay/tap/zsh-syntax-highlighting",
-                    "hyper", "stats"]
+  depends_on cask: [
+    "bevanjkay/tap/zsh-autosuggestions",
+    "bevanjkay/tap/zsh-syntax-highlighting",
+    "font-sf-mono",
+    "hyper",
+    "stats",
+  ]
 
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
