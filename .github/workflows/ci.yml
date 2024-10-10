@@ -75,17 +75,6 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
         with:
           core: false
-          cask: false
-          test-bot: true
-
-      - name: Clean up CI machine
-        run: brew test-bot --cleanup --only-cleanup-before
-      
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-        with:
-          core: false
           cask: true
           test-bot: false
 
