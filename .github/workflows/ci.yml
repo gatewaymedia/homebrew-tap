@@ -75,6 +75,17 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
         with:
           core: false
+          cask: false
+          test-bot: true
+
+      - name: Clean up CI machine
+        run: brew test-bot --cleanup --only-cleanup-before
+      
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+        with:
+          core: false
           cask: true
           test-bot: false
 
@@ -89,9 +100,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-
-      - name: Clean up CI machine
-        run: brew test-bot --cleanup --only-cleanup-before
 
       - name: Install dependent taps
         run: |
@@ -232,7 +240,7 @@ jobs:
 
       - name: Uninstall formula dependencies
         run: |
-          brew uninstall --formula ${{ join(fromJSON(steps.info.outputs.formula_dependencies), ' ') }}
+          brew uninstall --formula --force ${{ join(fromJSON(steps.info.outputs.formula_dependencies), ' ') }}
         if: always() && steps.install.outcome == 'success' && join(fromJSON(steps.info.outputs.formula_dependencies)) != ''
         timeout-minutes: 30
 
