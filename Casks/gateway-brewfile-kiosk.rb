@@ -1,5 +1,5 @@
 cask "gateway-brewfile-kiosk" do
-  version "20241021,72e9e34dd4764399c6e9bd32044d4b6bcb7ec620"
+  version "20241112,6066c7882afffdf59336cb77de4c5bd793a73700"
   sha256 :no_check
 
   on_monterey :or_older do
