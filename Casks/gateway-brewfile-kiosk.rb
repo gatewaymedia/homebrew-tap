@@ -15,10 +15,11 @@ cask "gateway-brewfile-kiosk" do
   homepage "https://github.com/gatewaymedia/dotfiles"
 
   livecheck do
-    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits/main"
+    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits?path=.Brewfile-kiosk"
     strategy :json do |json|
-      date = DateTime.parse(json["commit"]["committer"]["date"]).strftime("%Y%m%d")
-      "#{date},#{json["sha"]}"
+      latest_commit = json.first
+      date = DateTime.parse(latest_commit["commit"]["committer"]["date"]).strftime("%Y%m%d")
+      "#{date},#{latest_commit["sha"]}"
     end
   end
 
