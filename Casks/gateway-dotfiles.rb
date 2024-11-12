@@ -1,13 +1,6 @@
 cask "gateway-dotfiles" do
-  version "20241021,72e9e34dd4764399c6e9bd32044d4b6bcb7ec620"
+  version "20241112,873a16075246e947e9c18166426b90193657da76"
   sha256 :no_check
-
-  on_monterey :or_older do
-    binary ".Brewfile-legacy", target: "~/.Brewfile"
-  end
-  on_ventura :or_newer do
-    binary ".Brewfile", target: "~/.Brewfile"
-  end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
       branch:   "main"
@@ -42,13 +35,6 @@ cask "gateway-dotfiles" do
     if zshrc.exist?
       ohai "Backing up existing .zshrc"
       system "mv", "-f", "#{Dir.home}/.zshrc", "#{Dir.home}/.zshrc.backup"
-    end
-
-    Pathname("#{Dir.home}/Brewfile")
-
-    if zshrc.exist?
-      ohai "Backing up existing Brewfile"
-      system "mv", "-f", "#{Dir.home}/Brewfile", "#{Dir.home}/Brewfile.backup"
     end
   end
 
