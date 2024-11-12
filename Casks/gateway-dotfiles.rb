@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20241112,873a16075246e947e9c18166426b90193657da76"
+  version "20241112,6066c7882afffdf59336cb77de4c5bd793a73700"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
