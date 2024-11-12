@@ -1,5 +1,5 @@
 cask "gateway-brewfile-production" do
-  version "20241112,6066c7882afffdf59336cb77de4c5bd793a73700"
+  version "20241111,6066c7882afffdf59336cb77de4c5bd793a73700"
   sha256 :no_check
 
   on_monterey :or_older do
@@ -15,10 +15,11 @@ cask "gateway-brewfile-production" do
   homepage "https://github.com/gatewaymedia/dotfiles"
 
   livecheck do
-    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits/main"
+    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits?path=.Brewfile-production"
     strategy :json do |json|
-      date = DateTime.parse(json["commit"]["committer"]["date"]).strftime("%Y%m%d")
-      "#{date},#{json["sha"]}"
+      latest_commit = json.first
+      date = DateTime.parse(latest_commit["commit"]["committer"]["date"]).strftime("%Y%m%d")
+      "#{date},#{latest_commit["sha"]}"
     end
   end
 
