@@ -14,8 +14,8 @@ cask "font-go-to-old-western" do
     strategy :dafont
   end
 
-  font "Go 2 Old Western.otf"
-  font "Go 2 Old Western Italic.otf"
+  font "Go2OldWestern-Italic.ttf"
+  font "Go2OldWestern-Regular.ttf"
 
   # No zap stanza required
 end
