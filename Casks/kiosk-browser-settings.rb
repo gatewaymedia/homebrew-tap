@@ -1,15 +1,11 @@
 cask "kiosk-browser-settings" do
-  version "20241216.1"
-  sha256 :no_check
+  version "1.0.0"
+  sha256 "ee80f300e7a49cfc3fd51edce13673d13c3d403bb87901581ccdb12811b0b245"
 
-  url "https://gc.org.au/app/kiosk-settings/kiosk-settings.zip"
+  url "https://github.com/gatewaymedia/kiosk-browser-settings/archive/refs/tags/v#{version}.tar.gz"
   name "Kiosk Browser Settings"
   desc "Settings for Web Kiosk Browser"
-  homepage "https://gc.org.au/"
-
-  livecheck do
-    skip "Manual version management"
-  end
+  homepage "https://github.com/gatewaymedia/kiosk-browser-settings/"
 
   depends_on cask: "bevanjkay/tap/kiosk-browser"
 
