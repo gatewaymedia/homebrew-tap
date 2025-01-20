@@ -1,5 +1,5 @@
 cask "gateway-dotfiles" do
-  version "20241112,6066c7882afffdf59336cb77de4c5bd793a73700"
+  version "20250120,fa7257db73c44931200b829c7c845c3300f59b0c"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -21,6 +21,7 @@ cask "gateway-dotfiles" do
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
   artifact ".stats.json", target: "~/.stats.json"
+  artifact "config.sh", target: "~/.scripts/config.sh"
 
   preflight do
     omz = Pathname("#{Dir.home}/.oh-my-zsh/lib/")
