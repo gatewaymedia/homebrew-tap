@@ -1,7 +1,7 @@
 require "#{HOMEBREW_TAP_DIRECTORY}/gatewaymedia/homebrew-tap/cmd/lib/dafont"
 
 cask "font-go-to-old-western" do
-  version "20241213"
+  version "20250224"
   sha256 :no_check
 
   url "https://dl.dafont.com/dl/?f=go_2_old_western"
