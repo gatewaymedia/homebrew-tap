@@ -1,5 +1,7 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
+
+require "date"
 
 module Homebrew
   module Livecheck
@@ -25,22 +27,30 @@ module Homebrew
         def self.match?(url)
           URL_MATCH_REGEX.match?(url)
         end
+        sig { returns(TrueClass) }
+        def self.strategy_present?
+          true
+        end
 
-        # Checks the page content at the URL for new versions.
-        #
-        # @param url [String] the URL of the content to check
-        # @param regex [Regexp, nil] a regex used for matching versions
-        # @param provided_content [String, nil] content to use in place of
-        #   fetching via `Strategy#page_content`
-        # @return [Hash]
+        sig { returns(T::Hash[T.untyped, T.untyped]) }
+        def self.parameters
+          {
+            url_match_regex: URL_MATCH_REGEX,
+          }
+        end
+
+        sig {
+          params(url: String, regex: T.nilable(Regexp), provided_content: T.nilable(String),
+                 _unused: T.untyped).returns(T::Hash[Symbol, T.untyped])
+        }
         def self.find_versions(url:, regex: nil, provided_content: nil, **_unused)
           page = Homebrew::Livecheck::Strategy.page_content(url)
-          return [] if page.blank? || page[:content].blank?
+          return { matches: {}, url: } if page.blank? || page[:content].blank?
 
           updated = page[:content][/(?:Updated):\s+([^<"]+)/i, 1]
           first_seen = page[:content][/(?:First seen on DaFont):\s+([^<"]+)/i, 1]
           match = updated || first_seen
-          return [] unless match
+          return { matches: {}, url: } unless match
 
           year = match.split(",").last.tr(" ", "")
           month = Date::MONTHNAMES.index(match.split(",").first.split.first).to_s.rjust(2, "0")
