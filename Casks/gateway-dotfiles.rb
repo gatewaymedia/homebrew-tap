@@ -1,10 +1,12 @@
 cask "gateway-dotfiles" do
-  version "20250120.1,fa7257db73c44931200b829c7c845c3300f59b0c"
+  version "20250207,63748a1752aca150c9f7ed8b6877db5097ce0e6c"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
+      revision: version.csv.second,
       branch:   "main"
   name "Gateway Dotfiles"
+  desc "Dotfiles for Gateway Media"
   homepage "https://github.com/gatewaymedia/dotfiles"
 
   livecheck do
@@ -50,4 +52,6 @@ cask "gateway-dotfiles" do
     ohai "Importing Stats preferences"
     system "defaults", "import", "eu.exelban.Stats", "#{staged_path}/.stats.json"
   end
+
+  # No zap stanza required
 end
