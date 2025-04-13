@@ -1,5 +1,5 @@
 cask "gateway-brewfile-production" do
-  version "20241112,0eb794d04f08d38374ace788925f4727e970f79f"
+  version "20250413,34b2fed47f813abf28856503c0d98c0627fe217f"
   sha256 :no_check
 
   on_monterey :or_older do
