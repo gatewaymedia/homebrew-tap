@@ -2,10 +2,10 @@ cask "gateway-brewfile-kiosk" do
   version "20250701,d09c5655508f178fc189cb9bb1bcf8cc02e6d914"
   sha256 :no_check
 
-  on_monterey :or_older do
+  on_ventura :or_older do
     artifact ".Brewfile-kiosk-legacy", target: "~/.Brewfile"
   end
-  on_ventura :or_newer do
+  on_sonoma :or_newer do
     artifact ".Brewfile-kiosk", target: "~/.Brewfile"
   end
 
