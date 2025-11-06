@@ -1,13 +1,5 @@
 cask "brother-printer-setting-tool" do
-  on_high_sierra :or_older do
-    version "1.3.2,100793,15x15,132,10046"
-    sha256 "7355f23a1ec9dc645bc261e637d4af5441e22a1269ac624131a1e5c5105cba04"
-  end
-  on_mojave do
-    version "1.3.2,100793,15x15,132,10051"
-    sha256 "7355f23a1ec9dc645bc261e637d4af5441e22a1269ac624131a1e5c5105cba04"
-  end
-  on_catalina do
+  on_catalina :or_older do
     version "1.3.5,100946,12,135,10057"
     sha256 "2e7134065e6b7b920b0c58aee253c2a0e9ee1acbd9cdc1e5dc471b35ee663e8e"
   end
@@ -55,7 +47,7 @@ cask "brother-printer-setting-tool" do
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   pkg "BrotherPrinterSettingTool.pkg"
 
