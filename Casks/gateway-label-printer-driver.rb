@@ -1,13 +1,5 @@
 cask "gateway-label-printer-driver" do
-  on_high_sierra :or_older do
-    version "4.0.2,100354,13,800m402,10046"
-    sha256 "b2cc98b2607a9d43e5dcbd0e7e2a9ad41fca198f75b6c0f096cfcc9b6c9f93ec"
-  end
-  on_mojave do
-    version "4.0.4,100664,14,800m404,10051"
-    sha256 "bfa6d8bd5e4d4283ea7953d56ccfaab594caad26ca1dbdf381016d71c2745251"
-  end
-  on_catalina do
+  on_catalina :or_older do
     version "4.0.4a,100782,14,800m404a,10057"
     sha256 "fe23ddbc3ce6e48129efe480d5688b8068f793867562f89af0fab90292752679"
   end
@@ -55,7 +47,7 @@ cask "gateway-label-printer-driver" do
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   pkg "Brother_Printer_Drivers.pkg"
 
