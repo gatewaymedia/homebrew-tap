@@ -26,8 +26,8 @@ cask "gateway-brewfile-base" do
   # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
   auto_updates true
   conflicts_with cask: [
-    "gatewaymedia/tap/gateway-brewfile-production",
     "gatewaymedia/tap/gateway-brewfile-kiosk",
+    "gatewaymedia/tap/gateway-brewfile-production",
   ]
 
   preflight do
