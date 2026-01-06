@@ -1,5 +1,5 @@
 cask "gateway-brewfile-production" do
-  version "20250915,02ae53c7040550662a33a517d6f257bd3c62cc93"
+  version "20260106,a62f9b31ec622aadae21d2f2ab1fece06cf637cd"
   sha256 :no_check
 
   on_ventura :or_older do
