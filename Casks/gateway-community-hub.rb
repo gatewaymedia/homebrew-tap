@@ -1,6 +1,6 @@
 cask "gateway-community-hub" do
-  version "1.1.1"
-  sha256 "0e0d57b1b76b45cf57dd90aeb3f81528f581e100e31a09f2d9b2c7d3a338ab8e"
+  version "1.2.0"
+  sha256 "8e9fda77698946e7f5683ae96e5e17a0b5f7b7f58379467c620bff9f7f95bc8d"
 
   url "https://github.com/bevanjkay/pake-builder/releases/download/gateway-community-hub-#{version}/Gateway.Community.Hub.dmg",
       verified: "github.com/bevanjkay/pake-builder/"
