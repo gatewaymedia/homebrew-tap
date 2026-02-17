@@ -1,13 +1,6 @@
 cask "gateway-brewfile-production" do
-  version "20260106,a62f9b31ec622aadae21d2f2ab1fece06cf637cd"
+  version "20260217,633f409204988a3c520376eaac3af9171cbbc019"
   sha256 :no_check
-
-  on_ventura :or_older do
-    artifact ".Brewfile-production-legacy", target: "~/.Brewfile"
-  end
-  on_sonoma :or_newer do
-    artifact ".Brewfile-production", target: "~/.Brewfile"
-  end
 
   url "https://github.com/gatewaymedia/dotfiles.git",
       branch:   "main"
@@ -29,6 +22,8 @@ cask "gateway-brewfile-production" do
     "gatewaymedia/tap/gateway-brewfile-base",
     "gatewaymedia/tap/gateway-brewfile-kiosk",
   ]
+
+  artifact ".Brewfile-production", target: "~/.Brewfile"
 
   preflight do
     brewfile = Pathname("#{Dir.home}/.Brewfile")
