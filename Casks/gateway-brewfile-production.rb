@@ -1,5 +1,5 @@
 cask "gateway-brewfile-production" do
-  version "20260217,633f409204988a3c520376eaac3af9171cbbc019"
+  version "20260217,e0eb11746a80e53998e87dfde8b799bb269fe8d5"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
