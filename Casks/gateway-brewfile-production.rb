@@ -1,5 +1,5 @@
 cask "gateway-brewfile-production" do
-  version "20260217,e0eb11746a80e53998e87dfde8b799bb269fe8d5"
+  version "20260217,b733f7819115c1ef4b50e8a15686969b10abec94"
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
@@ -23,14 +23,21 @@ cask "gateway-brewfile-production" do
     "gatewaymedia/tap/gateway-brewfile-kiosk",
   ]
 
+  artifact ".Brewfile-base", target: "~/.Brewfile-base"
   artifact ".Brewfile-production", target: "~/.Brewfile"
 
   preflight do
     brewfile = Pathname("#{Dir.home}/.Brewfile")
+    brewfile_base = Pathname("#{Dir.home}/.Brewfile-base")
 
     if brewfile.exist?
       ohai "Backing up existing Brewfile"
       system "mv", "-f", "#{Dir.home}/.Brewfile", "#{Dir.home}/.Brewfile.backup"
+    end
+
+    if brewfile_base.exist?
+      ohai "Backing up existing Brewfile-base"
+      system "mv", "-f", "#{Dir.home}/.Brewfile-base", "#{Dir.home}/.Brewfile-base.backup"
     end
   end
 end
