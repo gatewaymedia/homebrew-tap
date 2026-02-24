@@ -8,17 +8,6 @@ cask "gateway-dotfiles" do
   desc "Dotfiles for Gateway Media"
   homepage "https://github.com/gatewaymedia/dotfiles"
 
-  livecheck do
-    url "https://api.github.com/repos/gatewaymedia/dotfiles/commits/main"
-    strategy :json do |json|
-      date = DateTime.parse(json["commit"]["committer"]["date"]).strftime("%Y%m%d")
-      "#{date},#{json["sha"]}"
-    end
-  end
-
-  # Doesn't auto-update but setting this prevents updates initiated by `brew upgrade`
-  auto_updates true
-
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"
   artifact ".stats.json", target: "~/.stats.json"
