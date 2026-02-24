@@ -1,9 +1,8 @@
 cask "gateway-dotfiles" do
-  version "20260224,59997b6590c614020ac223d1cd7bafed4b80009b"
+  version :latest
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
-      revision: version.csv.second,
       branch:   "main"
   name "Gateway Dotfiles"
   desc "Dotfiles for Gateway Media"
