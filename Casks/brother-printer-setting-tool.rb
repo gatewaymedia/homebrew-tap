@@ -47,7 +47,7 @@ cask "brother-printer-setting-tool" do
     end
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: :catalina
 
   pkg "BrotherPrinterSettingTool.pkg"
 

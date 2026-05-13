@@ -47,7 +47,7 @@ cask "gateway-label-printer-driver" do
     end
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: :catalina
 
   pkg "Brother_Printer_Drivers.pkg"
 
