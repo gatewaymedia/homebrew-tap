@@ -8,6 +8,7 @@ cask "kiosk-browser-settings" do
   homepage "https://github.com/gatewaymedia/kiosk-browser-settings/"
 
   depends_on cask: "bevanjkay/tap/kiosk-browser"
+  depends_on :macos
 
   app "Start Hub.app", target: "~/Desktop/Kiosk Browser Commands/Start Hub.app"
   app "Start Giving Kiosk.app", target: "~/Desktop/Kiosk Browser Commands/Start Giving Kiosk.app"
