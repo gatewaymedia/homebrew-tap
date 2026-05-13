@@ -18,6 +18,7 @@ cask "gateway-printer-driver" do
   end
 
   conflicts_with cask: "toshiba-color-mfp"
+  depends_on :macos
 
   pkg "TOSHIBA ColorMFP.pkg"
 
