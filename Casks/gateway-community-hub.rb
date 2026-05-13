@@ -13,6 +13,8 @@ cask "gateway-community-hub" do
     regex(/gateway-community-hub[._-]v?(\d+(?:\.\d+)+)/i)
   end
 
+  depends_on :macos
+
   app "Gateway Community Hub.app"
 
   postflight do
