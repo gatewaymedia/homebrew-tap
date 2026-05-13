@@ -13,6 +13,8 @@ cask "gateway-fluro-checkin" do
     regex(/gateway-fluro-checkin[._-]v?(\d+(?:\.\d+)+)/i)
   end
 
+  depends_on :macos
+
   app "Gateway Fluro Checkin.app"
 
   postflight do
