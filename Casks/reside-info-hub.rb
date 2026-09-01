@@ -2,8 +2,7 @@ cask "reside-info-hub" do
   version "2.0.1"
   sha256 "1217acad8f92c6bca7f61cbac1d52cfdab812478d7ec34b1ddae7a8849dd8b8e"
 
-  url "https://github.com/bevanjkay/pake-builder/releases/download/reside-info-hub-#{version}/Reside.Info.Hub.dmg",
-      verified: "github.com/bevanjkay/pake-builder/"
+  url "https://github.com/bevanjkay/pake-builder/releases/download/reside-info-hub-#{version}/Reside.Info.Hub.dmg"
   name "Reside Info Hub"
   desc "Desktop application for Reside Info Hub"
   homepage "https://info.reside.church/"
