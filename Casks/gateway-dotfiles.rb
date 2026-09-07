@@ -3,10 +3,12 @@ cask "gateway-dotfiles" do
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
-      branch:   "main"
+      branch: "main"
   name "Gateway Dotfiles"
   desc "Dotfiles for Gateway Media"
   homepage "https://github.com/gatewaymedia/dotfiles"
+
+  depends_on :macos
 
   artifact ".hyper.js", target: "~/.hyper.js"
   artifact ".zshrc", target: "~/.zshrc"

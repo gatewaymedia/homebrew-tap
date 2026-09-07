@@ -1,9 +1,5 @@
 cask "gateway-label-printer-driver" do
-  on_catalina :or_older do
-    version "4.0.4a,100782,14,800m404a,10057"
-    sha256 "fe23ddbc3ce6e48129efe480d5688b8068f793867562f89af0fab90292752679"
-  end
-  on_big_sur do
+  on_big_sur :or_older do
     version "4.0.4a,100782,14,800m404a,10064"
     sha256 "fe23ddbc3ce6e48129efe480d5688b8068f793867562f89af0fab90292752679"
   end
@@ -47,7 +43,7 @@ cask "gateway-label-printer-driver" do
     end
   end
 
-  depends_on macos: :catalina
+  depends_on macos: :big_sur
 
   pkg "Brother_Printer_Drivers.pkg"
 

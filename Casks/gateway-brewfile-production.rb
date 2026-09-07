@@ -3,7 +3,7 @@ cask "gateway-brewfile-production" do
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
-      branch:   "main"
+      branch: "main"
   name "Gateway Production Brewfile"
   homepage "https://github.com/gatewaymedia/dotfiles"
 
@@ -11,6 +11,7 @@ cask "gateway-brewfile-production" do
     "gatewaymedia/tap/gateway-brewfile-base",
     "gatewaymedia/tap/gateway-brewfile-kiosk",
   ]
+  depends_on :macos
 
   artifact ".Brewfile-base", target: "~/.Brewfile-base"
   artifact ".Brewfile-production", target: "~/.Brewfile"
