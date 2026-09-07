@@ -10,23 +10,35 @@ cask "kiosk-browser-settings" do
   depends_on cask: "bevanjkay/tap/kiosk-browser"
   depends_on :macos
 
-  app "Start Hub.app", target: "~/Desktop/Kiosk Browser Commands/Start Hub.app"
-  app "Start Giving Kiosk.app", target: "~/Desktop/Kiosk Browser Commands/Start Giving Kiosk.app"
-  artifact "hub.command", target: "~/Desktop/Kiosk Browser Commands/hub.command"
-  artifact "youth.command", target: "~/Desktop/Kiosk Browser Commands/youth.command"
-  artifact "website.command", target: "~/Desktop/Kiosk Browser Commands/website.command"
-  artifact "missions-signage.command", target: "~/Desktop/Kiosk Browser Commands/missions-signage.command"
-  artifact "giving-kiosk.command", target: "~/Desktop/Kiosk Browser Commands/giving-kiosk.command"
-  artifact "hubInject.js", target: "~/Desktop/Kiosk Browser Commands/hubInject.js"
-  artifact "youthInject.js", target: "~/Desktop/Kiosk Browser Commands/youthInject.js"
+  app "kiosk-browser-settings-#{version}/Start Hub.app", target: "~/Desktop/Kiosk Browser Commands/Start Hub.app"
+  app "kiosk-browser-settings-#{version}/Start Giving Kiosk.app", target: "~/Desktop/Kiosk Browser Commands/Start Giving Kiosk.app"
+  artifact "kiosk-browser-settings-#{version}/hub.command", target: "~/Desktop/Kiosk Browser Commands/hub.command"
+  artifact "kiosk-browser-settings-#{version}/youth.command", target: "~/Desktop/Kiosk Browser Commands/youth.command"
+  artifact "kiosk-browser-settings-#{version}/website.command", target: "~/Desktop/Kiosk Browser Commands/website.command"
+  artifact "kiosk-browser-settings-#{version}/missions-signage.command", target: "~/Desktop/Kiosk Browser Commands/missions-signage.command"
+  artifact "kiosk-browser-settings-#{version}/giving-kiosk.command", target: "~/Desktop/Kiosk Browser Commands/giving-kiosk.command"
+  artifact "kiosk-browser-settings-#{version}/hubInject.js", target: "~/Desktop/Kiosk Browser Commands/hubInject.js"
+  artifact "kiosk-browser-settings-#{version}/youthInject.js", target: "~/Desktop/Kiosk Browser Commands/youthInject.js"
 
-  postflight do
-    files = system_command "/bin/ls", args: [staged_path.to_s]
-    files_list = files.stdout.split("\n")
-    files_list.each do |file|
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{staged_path}/#{file}"]
-      system_command "/bin/chmod", args: ["+x", "#{staged_path}/#{file}"]
-    end
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           [
+          "-d",
+          "com.apple.quarantine",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/Start Hub.app",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/Start Giving Kiosk.app",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/hub.command",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/youth.command",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/website.command",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/missions-signage.command",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/giving-kiosk.command",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/hubInject.js",
+          "/Users/{{user}}/Desktop/Kiosk Browser Commands/youthInject.js",
+        ],
+        writable_paths: ["Desktop/Kiosk Browser Commands"],
+        writable_base:  :home,
+        must_succeed:   false
+    set_permissions "Desktop/Kiosk Browser Commands/*.command", "0755", base: :home
   end
 
   uninstall rmdir: "~/Desktop/Kiosk Browser Commands"

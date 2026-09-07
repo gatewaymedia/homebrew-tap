@@ -119,6 +119,7 @@ jobs:
 
       - name: Install dependent taps
         run: |
+          brew trust bevanjkay/formulae bevanjkay/tap
           brew tap bevanjkay/formulae
           brew tap bevanjkay/tap
         if: always() && matrix.cask

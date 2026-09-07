@@ -3,7 +3,7 @@ cask "gateway-brewfile-base" do
   sha256 :no_check
 
   url "https://github.com/gatewaymedia/dotfiles.git",
-      branch:   "main"
+      branch: "main"
   name "Gateway Production Brewfile"
   homepage "https://github.com/gatewaymedia/dotfiles"
 
@@ -11,15 +11,13 @@ cask "gateway-brewfile-base" do
     "gatewaymedia/tap/gateway-brewfile-kiosk",
     "gatewaymedia/tap/gateway-brewfile-production",
   ]
+  depends_on :macos
 
   artifact ".Brewfile-base", target: "~/.Brewfile"
 
-  preflight do
-    brewfile = Pathname("#{Dir.home}/.Brewfile")
-
-    if brewfile.exist?
-      ohai "Backing up existing Brewfile"
-      system "mv", "-f", "#{Dir.home}/.Brewfile", "#{Dir.home}/.Brewfile.backup"
+  preflight_steps do
+    if_path_exists ".Brewfile", base: :home do
+      move ".Brewfile", ".Brewfile.backup", source_base: :home, target_base: :home
     end
   end
 end

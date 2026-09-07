@@ -16,8 +16,9 @@ cask "gateway-fluro-checkin" do
 
   app "Gateway Fluro Checkin.app"
 
-  postflight do
-    system "xattr", "-d", "com.apple.quarantine", "#{staged_path}/Gateway Fluro Checkin.app"
+  postflight_steps do
+    run "/usr/bin/xattr", args:         ["-d", "com.apple.quarantine", "{{appdir}}/Gateway Fluro Checkin.app"],
+                          must_succeed: false
   end
 
   zap trash: "~/Library/Application Support/Gateway Fluro Checkin"
