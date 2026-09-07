@@ -13,32 +13,25 @@ cask "gateway-dotfiles" do
   artifact ".stats.json", target: "~/.stats.json"
   artifact "config.sh", target: "~/.scripts/config.sh"
 
-  preflight do
-    omz = Pathname("#{Dir.home}/.oh-my-zsh/lib/")
-
-    unless omz.exist?
-      ohai "Installing Oh My Zsh"
-      system "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+  preflight_steps do
+    unless_path_exists ".oh-my-zsh/lib", base: :home do
+      run "/bin/sh",
+          args:           ["-c", "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""],
+          env:            { "CHSH" => "no", "HOME" => "/Users/{{user}}", "KEEP_ZSHRC" => "yes", "RUNZSH" => "no" },
+          writable_paths: [".oh-my-zsh", ".zshrc"],
+          writable_base:  :home,
+          network_access: true
     end
-
-    zshrc = Pathname("#{Dir.home}/.zshrc")
-
-    if zshrc.exist?
-      ohai "Backing up existing .zshrc"
-      system "mv", "-f", "#{Dir.home}/.zshrc", "#{Dir.home}/.zshrc.backup"
+    if_path_exists ".zshrc", base: :home do
+      move ".zshrc", ".zshrc.backup", source_base: :home, target_base: :home
     end
-
-    hyperjs = Pathname("#{Dir.home}/.hyper.js")
-
-    if hyperjs.exist?
-      ohai "Backing up existing .hyper.js"
-      system "mv", "-f", "#{Dir.home}/.hyper.js", "#{Dir.home}/.hyper.js.backup"
+    if_path_exists ".hyper.js", base: :home do
+      move ".hyper.js", ".hyper.js.backup", source_base: :home, target_base: :home
     end
   end
 
-  postflight do
-    ohai "Importing Stats preferences"
-    system "defaults", "import", "eu.exelban.Stats", "#{staged_path}/.stats.json"
+  postflight_steps do
+    run "/usr/bin/defaults", args: ["import", "eu.exelban.Stats", "{{staged_path}}/.stats.json"]
   end
 
   # No zap stanza required

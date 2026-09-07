@@ -20,13 +20,25 @@ cask "kiosk-browser-settings" do
   artifact "hubInject.js", target: "~/Desktop/Kiosk Browser Commands/hubInject.js"
   artifact "youthInject.js", target: "~/Desktop/Kiosk Browser Commands/youthInject.js"
 
-  postflight do
-    files = system_command "/bin/ls", args: [staged_path.to_s]
-    files_list = files.stdout.split("\n")
-    files_list.each do |file|
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{staged_path}/#{file}"]
-      system_command "/bin/chmod", args: ["+x", "#{staged_path}/#{file}"]
-    end
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           [
+          "-d",
+          "com.apple.quarantine",
+          "{{staged_path}}/Start Hub.app",
+          "{{staged_path}}/Start Giving Kiosk.app",
+          "{{staged_path}}/hub.command",
+          "{{staged_path}}/youth.command",
+          "{{staged_path}}/website.command",
+          "{{staged_path}}/missions-signage.command",
+          "{{staged_path}}/giving-kiosk.command",
+          "{{staged_path}}/hubInject.js",
+          "{{staged_path}}/youthInject.js",
+        ],
+        writable_paths: ["Desktop/Kiosk Browser Commands"],
+        writable_base:  :home,
+        must_succeed:   false
+    set_permissions "Desktop/Kiosk Browser Commands/*.command", "0755", base: :home
   end
 
   uninstall rmdir: "~/Desktop/Kiosk Browser Commands"

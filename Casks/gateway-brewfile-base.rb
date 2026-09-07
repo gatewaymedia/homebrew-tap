@@ -14,12 +14,9 @@ cask "gateway-brewfile-base" do
 
   artifact ".Brewfile-base", target: "~/.Brewfile"
 
-  preflight do
-    brewfile = Pathname("#{Dir.home}/.Brewfile")
-
-    if brewfile.exist?
-      ohai "Backing up existing Brewfile"
-      system "mv", "-f", "#{Dir.home}/.Brewfile", "#{Dir.home}/.Brewfile.backup"
+  preflight_steps do
+    if_path_exists ".Brewfile", base: :home do
+      move ".Brewfile", ".Brewfile.backup", source_base: :home, target_base: :home
     end
   end
 end

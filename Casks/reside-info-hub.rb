@@ -16,8 +16,9 @@ cask "reside-info-hub" do
 
   app "Reside Info Hub.app"
 
-  postflight do
-    system "xattr", "-d", "com.apple.quarantine", "#{staged_path}/Reside Info Hub.app"
+  postflight_steps do
+    run "/usr/bin/xattr", args:         ["-d", "com.apple.quarantine", "{{appdir}}/Reside Info Hub.app"],
+                          must_succeed: false
   end
 
   zap trash: "~/Library/Application Support/Reside Info Hub"
